@@ -48,6 +48,37 @@ variable "code_repository" {
   sensitive   = false
 }
 
+variable "cognito_users" {
+  type = list(object({
+    username = string,
+    email    = string
+    })
+  )
+  description = "The Cognito users for the SageMaker domain"
+  default     = []
+}
+
+variable "create_sagemaker_default_user" {
+  type        = bool
+  description = "Whether to create a SageMaker default user for the SageMaker domain"
+  default     = true
+  sensitive   = false
+}
+
+variable "create_sagemaker_space" {
+  type        = bool
+  description = "Whether to create a SageMaker space for the SageMaker domain"
+  default     = true
+  sensitive   = false
+}
+
+variable "create_sagemaker_workforce" {
+  type        = bool
+  description = "Whether to create a SageMaker workforce for the SageMaker domain"
+  default     = true
+  sensitive   = false
+}
+
 variable "ebs_storage_size_gb_default" {
   type        = number
   description = "The default EBS storage size in GB for the SageMaker domain"
